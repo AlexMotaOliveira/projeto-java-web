@@ -1,5 +1,7 @@
 package br.com.impacta.javawbe.servlets.controller;
 
+import br.com.impacta.javawbe.servlets.model.Usuario;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,17 +18,20 @@ public class ValidaLogin extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String login = request.getParameter("login");
-    String senha = request.getParameter("senha");
 
-    if (login != null && senha != null && senha.equals("impacta1")) {
+    Usuario usuario = new Usuario();
+    usuario.setLogin(request.getParameter("login"));
+    usuario.setSenha(request.getParameter("senha"));
+
+    if (usuario.getLogin() != null && usuario.getSenha()
+      != null && "impacta1".equals(usuario.getSenha())) {
+      request.getSession().setAttribute("usuario", usuario);
       RequestDispatcher dispatcher = request.getRequestDispatcher("/sistema");
       dispatcher.forward(request, response);
       // cria servlet da página principal.
     } else {
-      response.sendRedirect("/erroLogin.html");
+      response.sendRedirect("/errologin.html");
       // cria página de erro.
-
     }
   }
 }
