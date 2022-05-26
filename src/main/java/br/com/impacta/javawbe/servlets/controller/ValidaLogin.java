@@ -1,4 +1,4 @@
-package br.com.impacta.javawbe.servlets.projetojavaweb.controller;
+package br.com.impacta.javawbe.servlets.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

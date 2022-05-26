@@ -1,4 +1,4 @@
-package br.com.impacta.javawbe.servlets.projetojavaweb;
+package br.com.impacta.javawbe.servlets.controller;
 
 import java.io.*;
 import javax.servlet.http.*;
