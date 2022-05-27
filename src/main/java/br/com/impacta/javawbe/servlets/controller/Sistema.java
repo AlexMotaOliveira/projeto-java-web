@@ -1,5 +1,7 @@
 package br.com.impacta.javawbe.servlets.controller;
 
+import br.com.impacta.javawbe.servlets.model.Usuario;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +18,9 @@ public class Sistema extends HttpServlet {
   }
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    Usuario usuarioSistema = (Usuario) request.getSession().getAttribute("usuario");
+
     response.setCharacterEncoding("UTF-8");
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
@@ -24,7 +29,7 @@ public class Sistema extends HttpServlet {
     out.println("<title>Sitema - Home </title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>Bem Vindo " + request.getParameter("login") + "!" + "</h1>");
+    out.println("<h1>Bem Vindo " + usuarioSistema.getLogin() + "!" + "</h1>");
     out.println("<h3>Esta é a página principal do sistema </h3>");
     out.println("<h3><a href=\"login.html\">Logout</a></h3>");
     out.println("<body>");
